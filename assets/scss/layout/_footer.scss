@@ -1,0 +1,17 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+
+// Footer styles
+.footer {
+  background-color: $black;
+  height: 190px;
+  .container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+  @include mq("tablet") {
+    height: 226px;
+  }
+}

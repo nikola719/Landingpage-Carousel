@@ -1,0 +1,24 @@
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+
+@font-face {
+  font-family: Aeonik;
+  font-style: "normal";
+  font-weight: 400;
+  src: url(../fonts/Aeonik-Regular.woff);
+}
+
+@font-face {
+  font-family: "Aeonik Medium";
+  font-style: "normal";
+  font-weight: 500;
+  src: url(../fonts/Aeonik-Medium.woff);
+}
+
+@font-face {
+  font-family: Aeonik;
+  font-style: "normal";
+  font-weight: 700;
+  src: url(../fonts/Aeonik-Bold.woff);
+}

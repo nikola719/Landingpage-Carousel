@@ -1,0 +1,54 @@
+/**
+ * Basic typography style for copy text
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-weight: 500;
+}
+p {
+  margin: 0;
+}
+
+h1 {
+  @include heading1();
+}
+
+h2 {
+  @include heading2();
+}
+
+h3 {
+  @include heading3();
+}
+
+h4 {
+  @include heading4();
+}
+
+h5 {
+  @include heading5();
+  &.size-medium {
+    @include heading5("medium");
+  }
+}
+
+p {
+  @include bodyText("medium");
+  &.size-large {
+    @include bodyText("large");
+  }
+  &.size-ordinary {
+    @include bodyText("ordinary");
+  }
+  &.size-normal {
+    @include bodyText("normal");
+  }
+  &.size-small {
+    @include bodyText("small");
+  }
+}

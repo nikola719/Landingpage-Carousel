@@ -1,0 +1,285 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the common parts in all application
+// -----------------------------------------------------------------------------
+
+//page styles
+.container {
+  max-width: 1252px;
+  margin: auto;
+  padding: 0 25px;
+}
+//section
+.section {
+  &-title {
+    width: 100%;
+    @include mq("tablet") {
+      width: 50%;
+    }
+  }
+  &-content {
+    width: 100%;
+    @include mq("tablet") {
+      width: 50%;
+    }
+  }
+}
+//work section
+.work {
+  background-color: $light-red;
+  height: 80vh;
+  padding-top: 85px;
+  @include mq("tablet") {
+    padding-top: 130px;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .section-title {
+    h1 {
+      margin-bottom: 46px;
+    }
+  }
+  .section-content {
+    p {
+      font-family: "Aeonik Medium";
+      margin-bottom: 31px;
+      @include mq("tablet") {
+        margin-bottom: 34px;
+      }
+    }
+  }
+}
+
+//client section
+.client {
+  margin-top: 0;
+  @include mq("tablet") {
+    margin-top: -145px;
+  }
+  &-content {
+    margin-bottom: 81px;
+    @include mq("tablet") {
+      margin-bottom: 93px;
+    }
+  }
+  &-carousel {
+    &__container {
+      position: relative;
+      margin-bottom: 27px;
+      @include mq("tablet") {
+        margin-bottom: 29px;
+      }
+      .slick-list {
+        overflow: visible;
+        width: 100vw;
+        margin: 0 -25px;
+        @include mq("tablet") {
+          width: initial;
+          margin: initial;
+        }
+      }
+    }
+    &__single {
+    }
+  }
+  &-meta {
+    display: flex;
+    flex-wrap: wrap;
+    &__left {
+      width: 100%;
+      @include mq("tablet") {
+        width: 50%;
+      }
+      h4 {
+        color: $light-red;
+        margin-bottom: 12px;
+      }
+      p {
+        font-family: "Aeonik Medium";
+        color: $black;
+        margin-bottom: 12px;
+      }
+      a {
+        font-family: "Aeonik Medium";
+        color: $dark-gray;
+        text-decoration: underline;
+        @include bodyText("normal");
+      }
+    }
+    &__right {
+      //   width: 100%;
+      font-family: "Aeonik Medium";
+      display: none;
+      @include mq("tablet") {
+        display: block;
+        width: 50%;
+      }
+      p {
+        color: $black;
+        text-align: right;
+      }
+    }
+  }
+  &-load {
+    margin-bottom: 82px;
+    padding-top: 0px;
+    text-align: center;
+    .load-more {
+      display: inline-block;
+      cursor: pointer;
+    }
+    @include mq("tablet") {
+      margin-bottom: 107px;
+      padding-top: 21px;
+    }
+  }
+}
+
+//ourclient section
+.ourclient {
+  background-color: $light-red;
+  padding: 91px 0;
+  @include mq("tablet") {
+    padding: 129px 0;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .section-title {
+    margin-bottom: 45px;
+  }
+  .section-content {
+    display: flex;
+    justify-content: space-between;
+    &__left {
+      width: 45%;
+    }
+    &__right {
+      width: 45%;
+    }
+  }
+  &-items {
+    margin-bottom: 32px;
+    font-family: "Aeonik Medium";
+  }
+  &-item {
+    &:first-child {
+      color: $black;
+    }
+  }
+}
+
+//todo section
+.todo {
+  background-color: $white;
+  color: $black;
+  padding: 97px 0 34px;
+  @include mq("tablet") {
+    padding: 165px 0 80px;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .section-title {
+    margin-bottom: 62px;
+  }
+  &-items {
+    margin-bottom: 62px;
+    @include mq("tablet") {
+      margin-bottom: 69px;
+    }
+  }
+  &-item {
+    @include bodyText("large");
+    &:first-child {
+      color: $light-red;
+    }
+  }
+}
+
+//photo section
+.photo {
+  position: relative;
+  line-height: 0;
+  &::before {
+    position: absolute;
+    content: "";
+    height: 50%;
+    width: 100%;
+    background-color: $black;
+    bottom: 0;
+    left: 0;
+  }
+  img {
+    position: relative;
+  }
+}
+
+//map section
+.map {
+  line-height: 0;
+  iframe {
+    width: 100%;
+    height: 130vw;
+    @include mq("tablet-small") {
+      height: 40vw;
+    }
+  }
+}
+//contact section
+.contact {
+  background-color: $black;
+  padding: 97px 0;
+  margin-top: -1px;
+  @include mq("tablet") {
+    padding: 134px 0;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .section-title {
+    margin-bottom: 45px;
+  }
+  .section-content {
+    font-family: "Aeonik Medium";
+    &__desc {
+      margin-bottom: 30px;
+      font-size: 22px;
+    }
+    &__tel {
+      margin-bottom: 30px;
+      p {
+        font-size: 22px;
+
+        &:first-child {
+          color: $light-red;
+        }
+      }
+    }
+    &__email {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 58px;
+      text-decoration: underline;
+      color: white;
+    }
+    &__map {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 30px;
+      text-decoration: underline;
+      color: white;
+      text-decoration-skip-ink: none;
+    }
+    &__address {
+      margin-bottom: 30px;
+      li {
+        font-size: 22px;
+      }
+    }
+  }
+}

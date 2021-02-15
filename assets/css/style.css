@@ -1,0 +1,546 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  background-color: #ffffff;
+  color: #ffffff;
+  overflow-x: hidden;
+  font-family: Aeonik; }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 3px; }
+  html::-webkit-scrollbar-track,
+  body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.8); }
+  html::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb {
+    background-color: #f0323c;
+    outline: 1px solid #f0323c;
+    border-radius: 2px; }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; }
+
+*:focus {
+  outline: none; }
+
+a,
+button,
+.btn {
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out; }
+
+img {
+  max-width: 100%; }
+
+ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none; }
+
+.transition, .header-nav .menu-item a::before, .header .hamburger-img, .header .hamburger-text span, .slick-arrow, .slick-arrow:hover {
+  transition: all ease-in-out 0.3s; }
+
+.cubic-transition, .header-nav__container, .header .hamburger {
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); }
+
+/**
+ * Basic typography style for copy text
+ */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-weight: 500; }
+
+p {
+  margin: 0; }
+
+h1 {
+  font-size: 50px; }
+  @media only screen and (min-width: 769px) {
+    h1 {
+      font-size: 58px; } }
+
+h4 {
+  font-size: 27px; }
+
+p {
+  font-size: 31px; }
+  @media only screen and (min-width: 769px) {
+    p {
+      font-size: 35px; } }
+  p.size-large {
+    font-size: 50px; }
+    @media only screen and (min-width: 769px) {
+      p.size-large {
+        font-size: 58px; } }
+  p.size-normal {
+    font-size: 19px; }
+    @media only screen and (min-width: 769px) {
+      p.size-normal {
+        font-size: 22px; } }
+  p.size-small {
+    font-size: 16px; }
+    @media only screen and (min-width: 769px) {
+      p.size-small {
+        font-size: 18px; } }
+
+@font-face {
+  font-family: Aeonik;
+  font-style: "normal";
+  font-weight: 400;
+  src: url(../fonts/Aeonik-Regular.woff); }
+@font-face {
+  font-family: "Aeonik Medium";
+  font-style: "normal";
+  font-weight: 500;
+  src: url(../fonts/Aeonik-Medium.woff); }
+@font-face {
+  font-family: Aeonik;
+  font-style: "normal";
+  font-weight: 700;
+  src: url(../fonts/Aeonik-Bold.woff); }
+.banner {
+  background-color: #000000;
+  padding-top: 0;
+  height: 100vh; }
+  @media only screen and (min-width: 769px) {
+    .banner {
+      padding-top: 97px; } }
+  .banner .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative; }
+  .banner .logo-container {
+    margin-bottom: 115px;
+    margin-top: 91px;
+    order: 1; }
+    .banner .logo-container img {
+      display: none; }
+      .banner .logo-container img:not(:first-child) {
+        display: block; }
+    @media only screen and (min-width: 769px) {
+      .banner .logo-container {
+        margin-bottom: 112px;
+        margin-top: 0;
+        order: initial; }
+        .banner .logo-container img {
+          display: block; }
+          .banner .logo-container img:not(:first-child) {
+            display: none; } }
+  .banner-introduction {
+    order: 1;
+    font-family: "Aeonik Medium"; }
+    .banner-introduction .container {
+      max-width: 617px;
+      padding: 0;
+      margin-left: 0; }
+    @media only screen and (min-width: 769px) {
+      .banner-introduction {
+        order: initial; } }
+
+.header {
+  position: fixed;
+  width: 100vw;
+  padding: 0;
+  margin: 0 -25px;
+  z-index: 10;
+  background-color: #000000; }
+  @media only screen and (min-width: 769px) {
+    .header {
+      width: 100%;
+      padding: 52px 0;
+      margin: 0;
+      position: absolute;
+      bottom: 0; } }
+  .header-nav {
+    position: relative; }
+    @media only screen and (min-width: 769px) {
+      .header-nav {
+        padding: 0;
+        width: initial; } }
+    .header-nav__container {
+      position: absolute;
+      top: -100vh;
+      left: 0;
+      padding: 0 25px;
+      height: 100vh;
+      width: 100%;
+      background-color: #f0323c;
+      opacity: 0; }
+      @media only screen and (min-width: 769px) {
+        .header-nav__container {
+          position: relative;
+          top: initial;
+          left: initial;
+          padding: initial;
+          height: initial;
+          width: initial;
+          background-color: initial;
+          opacity: 1; } }
+    .header-nav__items {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%; }
+      @media only screen and (min-width: 769px) {
+        .header-nav__items {
+          flex-direction: row;
+          justify-content: initial;
+          height: initial; } }
+    .header-nav .menu-item {
+      padding-right: 0;
+      font-family: "Aeonik Medium"; }
+      @media only screen and (min-width: 769px) {
+        .header-nav .menu-item {
+          padding-right: 52px; } }
+      .header-nav .menu-item a {
+        position: relative;
+        font-size: 57px;
+        color: #000000; }
+        .header-nav .menu-item a::before {
+          position: absolute;
+          content: "";
+          width: 0;
+          height: 2px;
+          left: 50%;
+          bottom: 0;
+          transform: translateX(-50%);
+          background-color: #ffffff; }
+        .header-nav .menu-item a:hover::before {
+          width: 100%;
+          transition: all ease-in-out 0.3s; }
+        @media only screen and (min-width: 769px) {
+          .header-nav .menu-item a {
+            font-size: 22px;
+            color: #798691; } }
+        .header-nav .menu-item a:hover {
+          color: #ffffff; }
+  .header .hamburger {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+    padding: 22px 25px;
+    width: 100%;
+    z-index: 100;
+    cursor: pointer;
+    background-color: initial; }
+    .header .hamburger-img {
+      width: 15px;
+      height: 15px;
+      margin-right: 8px;
+      margin-top: 2px; }
+    .header .hamburger-text {
+      position: relative;
+      width: 50px; }
+      .header .hamburger-text span {
+        position: absolute;
+        opacity: 1;
+        visibility: visible;
+        font-size: 19px; }
+        @media only screen and (min-width: 769px) {
+          .header .hamburger-text span {
+            font-size: 22px; } }
+        .header .hamburger-text span:not(:first-child) {
+          opacity: 0;
+          visibility: hidden; }
+    @media only screen and (min-width: 769px) {
+      .header .hamburger {
+        display: none; } }
+  .header.active .header-nav__container {
+    top: 0;
+    opacity: 1; }
+  .header.active .hamburger {
+    background-color: #f0323c; }
+    .header.active .hamburger-img {
+      transform: rotate(45deg); }
+    .header.active .hamburger-text span {
+      opacity: 0;
+      visibility: hidden; }
+      .header.active .hamburger-text span:not(:first-child) {
+        opacity: 1;
+        visibility: visible; }
+
+.footer {
+  background-color: #000000;
+  height: 190px; }
+  .footer .container {
+    display: flex;
+    height: 100%;
+    align-items: center; }
+  @media only screen and (min-width: 769px) {
+    .footer {
+      height: 226px; } }
+
+.slick-prev,
+.slick-next {
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  top: 65%;
+  outline: none; }
+  .slick-prev::before,
+  .slick-next::before {
+    opacity: 0;
+    display: none; }
+  .slick-prev::after,
+  .slick-next::after {
+    position: absolute;
+    content: "";
+    border-color: #ffffff #ffffff transparent transparent;
+    border-style: solid;
+    border-width: 6px;
+    transform: rotate(45deg);
+    right: 8px;
+    top: 6px;
+    width: 35px;
+    height: 35px; }
+  .slick-prev:hover,
+  .slick-next:hover {
+    background-color: transparent;
+    color: initial; }
+  .slick-prev:focus,
+  .slick-next:focus {
+    background-color: transparent;
+    color: initial; }
+
+.slick-prev {
+  left: 10%;
+  display: none !important; }
+  .slick-prev::after {
+    border-color: transparent transparent #ffffff #ffffff;
+    right: 3px; }
+
+.slick-next {
+  right: 10%; }
+
+.slick-arrow:hover {
+  opacity: 0.7; }
+
+.container {
+  max-width: 1252px;
+  margin: auto;
+  padding: 0 25px; }
+
+.section-title {
+  width: 100%; }
+  @media only screen and (min-width: 769px) {
+    .section-title {
+      width: 50%; } }
+.section-content {
+  width: 100%; }
+  @media only screen and (min-width: 769px) {
+    .section-content {
+      width: 50%; } }
+
+.work {
+  background-color: #f0323c;
+  height: 80vh;
+  padding-top: 85px; }
+  @media only screen and (min-width: 769px) {
+    .work {
+      padding-top: 130px; } }
+  .work .container {
+    display: flex;
+    flex-wrap: wrap; }
+  .work .section-title h1 {
+    margin-bottom: 46px; }
+  .work .section-content p {
+    font-family: "Aeonik Medium";
+    margin-bottom: 31px; }
+    @media only screen and (min-width: 769px) {
+      .work .section-content p {
+        margin-bottom: 34px; } }
+
+.client {
+  margin-top: 0; }
+  @media only screen and (min-width: 769px) {
+    .client {
+      margin-top: -145px; } }
+  .client-content {
+    margin-bottom: 81px; }
+    @media only screen and (min-width: 769px) {
+      .client-content {
+        margin-bottom: 93px; } }
+  .client-carousel__container {
+    position: relative;
+    margin-bottom: 27px; }
+    @media only screen and (min-width: 769px) {
+      .client-carousel__container {
+        margin-bottom: 29px; } }
+    .client-carousel__container .slick-list {
+      overflow: visible;
+      width: 100vw;
+      margin: 0 -25px; }
+      @media only screen and (min-width: 769px) {
+        .client-carousel__container .slick-list {
+          width: initial;
+          margin: initial; } }
+  .client-meta {
+    display: flex;
+    flex-wrap: wrap; }
+    .client-meta__left {
+      width: 100%; }
+      @media only screen and (min-width: 769px) {
+        .client-meta__left {
+          width: 50%; } }
+      .client-meta__left h4 {
+        color: #f0323c;
+        margin-bottom: 12px; }
+      .client-meta__left p {
+        font-family: "Aeonik Medium";
+        color: #000000;
+        margin-bottom: 12px; }
+      .client-meta__left a {
+        font-family: "Aeonik Medium";
+        color: #8c959f;
+        text-decoration: underline;
+        font-size: 19px; }
+        @media only screen and (min-width: 769px) {
+          .client-meta__left a {
+            font-size: 22px; } }
+    .client-meta__right {
+      font-family: "Aeonik Medium";
+      display: none; }
+      @media only screen and (min-width: 769px) {
+        .client-meta__right {
+          display: block;
+          width: 50%; } }
+      .client-meta__right p {
+        color: #000000;
+        text-align: right; }
+  .client-load {
+    margin-bottom: 82px;
+    padding-top: 0px;
+    text-align: center; }
+    .client-load .load-more {
+      display: inline-block;
+      cursor: pointer; }
+    @media only screen and (min-width: 769px) {
+      .client-load {
+        margin-bottom: 107px;
+        padding-top: 21px; } }
+
+.ourclient {
+  background-color: #f0323c;
+  padding: 91px 0; }
+  @media only screen and (min-width: 769px) {
+    .ourclient {
+      padding: 129px 0; } }
+  .ourclient .container {
+    display: flex;
+    flex-wrap: wrap; }
+  .ourclient .section-title {
+    margin-bottom: 45px; }
+  .ourclient .section-content {
+    display: flex;
+    justify-content: space-between; }
+    .ourclient .section-content__left {
+      width: 45%; }
+    .ourclient .section-content__right {
+      width: 45%; }
+  .ourclient-items {
+    margin-bottom: 32px;
+    font-family: "Aeonik Medium"; }
+  .ourclient-item:first-child {
+    color: #000000; }
+
+.todo {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 97px 0 34px; }
+  @media only screen and (min-width: 769px) {
+    .todo {
+      padding: 165px 0 80px; } }
+  .todo .container {
+    display: flex;
+    flex-wrap: wrap; }
+  .todo .section-title {
+    margin-bottom: 62px; }
+  .todo-items {
+    margin-bottom: 62px; }
+    @media only screen and (min-width: 769px) {
+      .todo-items {
+        margin-bottom: 69px; } }
+  .todo-item {
+    font-size: 50px; }
+    @media only screen and (min-width: 769px) {
+      .todo-item {
+        font-size: 58px; } }
+    .todo-item:first-child {
+      color: #f0323c; }
+
+.photo {
+  position: relative;
+  line-height: 0; }
+  .photo::before {
+    position: absolute;
+    content: "";
+    height: 50%;
+    width: 100%;
+    background-color: #000000;
+    bottom: 0;
+    left: 0; }
+  .photo img {
+    position: relative; }
+
+.map {
+  line-height: 0; }
+  .map iframe {
+    width: 100%;
+    height: 130vw; }
+    @media only screen and (min-width: 641px) {
+      .map iframe {
+        height: 40vw; } }
+
+.contact {
+  background-color: #000000;
+  padding: 97px 0;
+  margin-top: -1px; }
+  @media only screen and (min-width: 769px) {
+    .contact {
+      padding: 134px 0; } }
+  .contact .container {
+    display: flex;
+    flex-wrap: wrap; }
+  .contact .section-title {
+    margin-bottom: 45px; }
+  .contact .section-content {
+    font-family: "Aeonik Medium"; }
+    .contact .section-content__desc {
+      margin-bottom: 30px;
+      font-size: 22px; }
+    .contact .section-content__tel {
+      margin-bottom: 30px; }
+      .contact .section-content__tel p {
+        font-size: 22px; }
+        .contact .section-content__tel p:first-child {
+          color: #f0323c; }
+    .contact .section-content__email {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 58px;
+      text-decoration: underline;
+      color: white; }
+    .contact .section-content__map {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 30px;
+      text-decoration: underline;
+      color: white;
+      text-decoration-skip-ink: none; }
+    .contact .section-content__address {
+      margin-bottom: 30px; }
+      .contact .section-content__address li {
+        font-size: 22px; }
+
+/*# sourceMappingURL=style.css.map */

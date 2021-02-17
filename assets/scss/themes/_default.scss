@@ -12,6 +12,18 @@
 .section {
   &-title {
     width: 100%;
+    h1 {
+      overflow: hidden;
+      &.is-visible {
+        span {
+          @include text-transition-effect();
+        }
+      }
+      span {
+        display: inline-block;
+        @include text-transition();
+      }
+    }
     @include mq("tablet") {
       width: 50%;
     }
@@ -26,7 +38,7 @@
 //work section
 .work {
   background-color: $light-red;
-  height: 80vh;
+  height: 90vh;
   padding-top: 85px;
   @include mq("tablet") {
     padding-top: 130px;
@@ -44,8 +56,22 @@
     p {
       font-family: "Aeonik Medium";
       margin-bottom: 31px;
+      opacity: 0;
+      @for $i from 0 through $menu-items {
+        &:nth-child(#{$i}) {
+          transform: translateX(calc(#{$i + 1} * 30px));
+          transition: 0.7s ease-in-out;
+          transition-delay: calc(#{($i + 1)} * 0.2s);
+        }
+      }
       @include mq("tablet") {
         margin-bottom: 34px;
+      }
+    }
+    &.is-visible {
+      p {
+        opacity: 1;
+        transform: translateX(0);
       }
     }
   }
@@ -81,6 +107,22 @@
       }
     }
     &__single {
+      img {
+        width: 100%;
+        object-fit: cover;
+        height: 70vw;
+        @include mq("tablet") {
+          height: 50vw;
+        }
+      }
+      iframe {
+        width: 100%;
+        object-fit: cover;
+        height: 70vw;
+        @include mq("tablet") {
+          height: 50vw;
+        }
+      }
     }
   }
   &-meta {
@@ -94,17 +136,56 @@
       h4 {
         color: $light-red;
         margin-bottom: 12px;
+        overflow: hidden;
+        span {
+          display: inline-block;
+          @include text-transition();
+        }
+        &.is-visible {
+          span {
+            @include text-transition-effect();
+          }
+        }
       }
       p {
         font-family: "Aeonik Medium";
         color: $black;
         margin-bottom: 12px;
+        overflow: hidden;
+        span {
+          display: inline-block;
+          @include text-transition();
+        }
+        &.is-visible {
+          span {
+            @include text-transition-effect();
+            transition-delay: 0.35s;
+          }
+        }
       }
       a {
         font-family: "Aeonik Medium";
+        display: block;
         color: $dark-gray;
-        text-decoration: underline;
+        overflow: hidden;
         @include bodyText("normal");
+        @extend .transition;
+        &:hover {
+          color: $black;
+          text-decoration-color: $black;
+          @extend .transition;
+        }
+        span {
+          display: inline-block;
+          text-decoration: underline;
+          @include text-transition();
+        }
+        &.is-visible {
+          span {
+            @include text-transition-effect();
+            transition-delay: 0.55s;
+          }
+        }
       }
     }
     &__right {
@@ -118,6 +199,14 @@
       p {
         color: $black;
         text-align: right;
+        opacity: 0;
+        transform: translateX(40px);
+        transition: 0.7s ease-in-out;
+        &.is-visible {
+          opacity: 1;
+          transform: translateX(0);
+          transition-delay: 0.15s;
+        }
       }
     }
   }
@@ -128,6 +217,29 @@
     .load-more {
       display: inline-block;
       cursor: pointer;
+      transform-origin: center center;
+      transition-property: transform;
+      animation-name: anti-rotate;
+      animation-duration: 0.7s;
+      animation-iteration-count: 1;
+      animation-timing-function: cubic-bezier(0.8, 0.3, 0.3, 1);
+      animation-fill-mode: none;
+      svg {
+        path {
+          @extend .transition;
+        }
+      }
+      &:hover {
+        animation-name: rotate;
+        animation-duration: 0.7s;
+        animation-iteration-count: 1;
+        animation-timing-function: cubic-bezier(0.8, 0.3, 0.3, 1);
+        animation-fill-mode: none;
+        path {
+          fill: $light-red;
+          @extend .transition;
+        }
+      }
     }
     @include mq("tablet") {
       margin-bottom: 107px;
@@ -163,8 +275,26 @@
   &-items {
     margin-bottom: 32px;
     font-family: "Aeonik Medium";
+    &.is-visible {
+      .ourclient-item {
+        p {
+          @include text-transition-effect();
+        }
+        @for $i from 0 through 15 {
+          &:nth-child(#{$i}) {
+            p {
+              transition-delay: #{$i * 0.1s};
+            }
+          }
+        }
+      }
+    }
   }
   &-item {
+    overflow: hidden;
+    p {
+      @include text-transition;
+    }
     &:first-child {
       color: $black;
     }
@@ -188,12 +318,31 @@
   }
   &-items {
     margin-bottom: 62px;
+    &.is-visible {
+      .todo-item {
+        span {
+          @include text-transition-effect();
+        }
+        @for $i from 0 through 10 {
+          &:nth-child(#{$i}) {
+            span {
+              transition-delay: #{$i * 0.1s};
+            }
+          }
+        }
+      }
+    }
     @include mq("tablet") {
       margin-bottom: 69px;
     }
   }
   &-item {
-    @include bodyText("large");
+    overflow: hidden;
+    span {
+      display: inline-block;
+      @include text-transition();
+      @include bodyText("large");
+    }
     &:first-child {
       color: $light-red;
     }
@@ -247,14 +396,36 @@
   .section-content {
     font-family: "Aeonik Medium";
     &__desc {
+      overflow: hidden;
       margin-bottom: 30px;
       font-size: 22px;
+      &.is-visible {
+        span {
+          @include text-transition-effect();
+        }
+      }
+      span {
+        display: inline-block;
+        @include text-transition();
+      }
     }
     &__tel {
       margin-bottom: 30px;
-      p {
+      li {
+        overflow: hidden;
+      }
+      &.is-visible {
+        span {
+          @include text-transition-effect();
+          &:not(:first-child) {
+            transition-delay: 0.25s;
+          }
+        }
+      }
+      span {
+        display: inline-block;
         font-size: 22px;
-
+        @include text-transition();
         &:first-child {
           color: $light-red;
         }
@@ -264,22 +435,172 @@
       display: block;
       font-size: 22px;
       margin-bottom: 58px;
-      text-decoration: underline;
       color: white;
+      overflow: hidden;
+      span {
+        text-decoration: underline;
+        display: inline-block;
+        @include text-transition();
+      }
+      &.is-visible {
+        span {
+          @include text-transition-effect();
+        }
+      }
     }
     &__map {
       display: block;
       font-size: 22px;
       margin-bottom: 30px;
-      text-decoration: underline;
       color: white;
       text-decoration-skip-ink: none;
+      overflow: hidden;
+      span {
+        text-decoration: underline;
+        display: inline-block;
+        @include text-transition();
+      }
+      &.is-visible {
+        span {
+          @include text-transition-effect();
+        }
+      }
     }
     &__address {
       margin-bottom: 30px;
+      &.is-visible {
+        li {
+          span {
+            @include text-transition-effect();
+          }
+          @for $i from 0 through 10 {
+            &:nth-child(#{$i}) {
+              span {
+                transition-delay: #{$i * 0.1s};
+              }
+            }
+          }
+        }
+      }
       li {
         font-size: 22px;
+        overflow: hidden;
+        span {
+          display: inline-block;
+          @include text-transition();
+        }
       }
     }
+  }
+}
+
+//project
+.project {
+  padding-bottom: 100px;
+  position: relative;
+  .container {
+    position: relative;
+  }
+  &-content {
+    &__img {
+      margin: 0 -25px;
+      margin-bottom: 30px;
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 70vw;
+        @include mq("tablet") {
+          height: 50vw;
+        }
+      }
+      @include mq("tablet") {
+        margin: initial;
+        margin-bottom: 64px;
+      }
+    }
+    &__video {
+      margin: 0 -25px;
+      margin-bottom: 30px;
+      iframe {
+        width: 100%;
+        height: 50vw;
+        height: 70vw;
+        @include mq("tablet") {
+          height: 50vw;
+        }
+      }
+      @include mq("tablet") {
+        margin: initial;
+        margin-bottom: 64px;
+      }
+    }
+    p {
+      max-width: 570px;
+      color: $black;
+      margin-bottom: 50px;
+      opacity: 0;
+      transform: translateX(40px);
+      transition: 0.7s ease-in-out;
+      &.is-visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      @include mq("tablet") {
+        margin-bottom: 104px;
+      }
+    }
+  }
+  @include mq("tablet") {
+    margin-bottom: -1px;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 100vw;
+      height: 150px;
+      background-color: $black;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+.loading-screen {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  background-color: $light-red;
+  width: 100%;
+  height: 100%;
+  transform: scaleY(0) skewX(0);
+  transform-origin: top left;
+}
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 100;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes anti-rotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
   }
 }

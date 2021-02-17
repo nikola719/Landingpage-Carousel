@@ -20,7 +20,14 @@
     margin-bottom: 115px;
     margin-top: 91px;
     order: 1;
+    overflow: hidden;
+    &.is-visible {
+      img {
+        @include text-transition-effect();
+      }
+    }
     img {
+      @include text-transition();
       display: none;
       &:not(:first-child) {
         display: block;
@@ -41,10 +48,52 @@
   &-introduction {
     order: 1;
     font-family: "Aeonik Medium";
+    &__lists {
+      font-family: "Aeonik Medium";
+      &.is-visible {
+        .banner-introduction__list {
+          @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+              span {
+                transition-delay: #{$i * 0.2s};
+              }
+            }
+          }
+          span {
+            @include text-transition-effect();
+          }
+        }
+      }
+    }
+    &__list {
+      @include bodyText("medium");
+      color: $light-gray;
+      overflow: hidden;
+      span {
+        display: inline-block;
+        @include text-transition();
+      }
+      &:first-child {
+        color: $white;
+      }
+    }
     .container {
       max-width: 617px;
       padding: 0;
       margin-left: 0;
+    }
+    p.text-block {
+      overflow: hidden;
+      span {
+        @include text-transition();
+        display: inline-block;
+      }
+      &.is-visible {
+        span {
+          @include text-transition-effect();
+          transition-delay: 0.5s;
+        }
+      }
     }
     @include mq("tablet") {
       order: initial;
@@ -58,6 +107,7 @@
   margin: 0 -25px;
   z-index: $z-header;
   background-color: $black;
+  @extend .transition;
   @include mq("tablet") {
     width: 100%;
     padding: 52px 0;
@@ -66,16 +116,17 @@
     bottom: 0;
   }
   &-nav {
-    // padding: 22px 25px;
     position: relative;
+    padding: 22px 25px;
+    width: 100%;
     @include mq("tablet") {
       padding: 0;
       width: initial;
     }
     &__container {
       position: absolute;
-      top: -100vh;
-      left: 0;
+      top: 0;
+      left: -100vw;
       padding: 0 25px;
       height: 100vh;
       width: 100%;
@@ -98,6 +149,7 @@
       flex-direction: column;
       justify-content: center;
       height: 100%;
+
       @include mq("tablet") {
         flex-direction: row;
         justify-content: initial;
@@ -107,20 +159,41 @@
     .menu-item {
       padding-right: 0;
       font-family: "Aeonik Medium";
+      opacity: 0;
+      @extend .cubic-transition;
+      @for $i from 0 through $menu-items {
+        &:nth-child(#{$i}) {
+          transform: translateY(calc(#{$i - 6} * 20px));
+          transition-delay: #{($i - 1)} * 0.2s;
+        }
+      }
       @include mq("tablet") {
         padding-right: 52px;
+        opacity: 1;
+        transition: initial;
+        @for $i from 0 through 5 {
+          &:nth-child(#{$i}) {
+            transform: initial;
+            transition-delay: initial;
+          }
+        }
       }
       a {
         position: relative;
         font-size: 57px;
         color: $black;
-        @include menuEffect($white);
-        @include hoverEffect();
+        // @include menuEffect($white);
+        // @include hoverEffect();
+        @extend .transition;
         @include mq("tablet") {
           font-size: 22px;
           color: $light-gray;
         }
         &:hover {
+          color: $light-red;
+          @extend .transition;
+        }
+        &.active {
           color: $white;
         }
       }
@@ -131,8 +204,6 @@
     display: inline-flex;
     align-items: center;
     line-height: 0;
-    padding: 22px 25px;
-    width: 100%;
     z-index: 100;
     cursor: pointer;
     background-color: initial;
@@ -142,7 +213,7 @@
       height: 15px;
       margin-right: 8px;
       margin-top: 2px;
-      @extend .transition;
+      @extend .cubic-transition;
     }
     &-text {
       position: relative;
@@ -166,12 +237,22 @@
   &.active {
     .header-nav {
       &__container {
-        top: 0;
+        left: 0;
         opacity: 1;
+      }
+      .menu-item {
+        transform: translateY(0);
+        opacity: 1;
+        @extend .cubic-transition;
+        @for $i from 0 through $menu-items {
+          &:nth-child(#{$i}) {
+            transition-delay: #{($i - 1) * 0.2s};
+          }
+        }
       }
     }
     .hamburger {
-      background-color: $light-red;
+      // background-color: $light-red;
       &-img {
         transform: rotate(45deg);
       }
@@ -186,5 +267,23 @@
         }
       }
     }
+  }
+  &.is-sticky {
+    position: fixed;
+    top: 0;
+    bottom: initial;
+    left: 0;
+    width: 100vw;
+    padding: 30px 0;
+    @extend .transition;
+    .header-nav {
+      max-width: 1252px;
+      padding: 0 25px;
+      margin: auto;
+    }
+  }
+  &.is-hidden {
+    transform: translateY(-100px);
+    @extend .cubic-transition;
   }
 }
